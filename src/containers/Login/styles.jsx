@@ -57,7 +57,7 @@ export const Input = styled.input`
   padding-left: 5px;
   gap: 0px;
   border-radius: 10px;
-  border: none;
+  border: ${props => (props.error ? '2px solid red' : 'none')};
 `
 
 export const Button = styled.button`
@@ -89,4 +89,9 @@ export const SignInLik = styled.p`
     text-decoration: underline;
     cursor: pointer;
   }
+`
+export const ErrorMessage = styled.p`
+  color: red;
+  margin-top: 5px;
+  font-weight: normal;
 `
