@@ -24,6 +24,11 @@ export const ContainerItens = styled.div`
   flex-direction: column;
   justify-content: center;
 
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+
   h1 {
     color: #fff;
     font-family: Roboto;
