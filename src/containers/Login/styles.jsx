@@ -12,13 +12,13 @@ export const Container = styled.div`
 `
 
 export const LoginImage = styled.img`
-  height: 70%;
+  height: 85%;
 `
 
 export const ContainerItens = styled.div`
   background-color: #373737;
   border-radius: 0 10px 10px 0;
-  height: 70%;
+  height: 85%;
   padding: 25px 75px;
   display: flex;
   flex-direction: column;
