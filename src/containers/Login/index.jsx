@@ -5,6 +5,7 @@ import * as yup from 'yup'
 
 import LoginImg from '../../assets/login-image.svg'
 import Logo from '../../assets/logo.svg'
+import Button from '../../components/Button'
 import api from '../../services/api'
 
 function Login() {
@@ -67,13 +68,9 @@ function Login() {
               <p className="w-[100%] ml-[20px] mt-1 text-red-600">
                 {errors.password?.message}
               </p>
-
-              <button
-                className="ml-5 md:mr-[175px] mt-10 w-[182.81px] rounded-[20px] bg-[#9758A6] hover:opacity-[0.8] active:opacity-[0.5] focus:outline-none border-none"
-                type="submit"
-              >
+              <Button type="submit" style={{ marginTop: 75 }}>
                 Sign In
-              </button>
+              </Button>
             </form>
             <p className="w-[100%] ml-[50px] md:ml-[99px] mt-5">
               Não possui conta ?{' '}
