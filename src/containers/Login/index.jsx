@@ -6,16 +6,6 @@ import * as yup from 'yup'
 import LoginImg from '../../assets/login-image.svg'
 import Logo from '../../assets/logo.svg'
 import api from '../../services/api'
-import {
-  Container,
-  LoginImage,
-  ContainerItens,
-  Label,
-  Input,
-  Button,
-  SignInLik,
-  ErrorMessage
-} from './styles'
 
 function Login() {
   const schema = yup.object().shape({
@@ -45,37 +35,59 @@ function Login() {
     console.log(res)
   }
   return (
-    <Container>
-      <LoginImage src={LoginImg} alt="login-image" />
-      <ContainerItens>
-        <img src={Logo} alt="Logo" />
-        <h1>Login</h1>
-
-        <form noValidate onSubmit={handleSubmit(onSubmit)}>
-          <Label>Email</Label>
-          <Input
-            type="email"
-            {...register('email')}
-            error={errors.email?.message}
+    <>
+      <body className="bg-red bg-[url(C:\Users\airton\Desktop\DevClub\codeburger-react\src\assets\background.svg)] bg-no-repeat bg-cover w-screen h-screen flex justify-center items-center ">
+        <div className="flex w-0 md:w-[1000px] justify-center items-center">
+          <img
+            className="w-[555px] h-[650px] invisible md:visible"
+            src={LoginImg}
+            alt=""
           />
-          <ErrorMessage>{errors.email?.message}</ErrorMessage>
 
-          <Label>Senha</Label>
-          <Input
-            type="password"
-            {...register('password')}
-            error={errors.password?.message}
-          />
-          <ErrorMessage>{errors.password?.message}</ErrorMessage>
+          <div className="bg-[#373737] h-[670px] md:h-[650px] md:w-[555px] flex flex-col justify-center items-center">
+            <img className="w-[260px] h-[94px]" src={Logo} alt="" />
+            <h1 className="text-2xl text-center mt-24 mb-5">Login</h1>
 
-          <Button type="submit">Sign in</Button>
-        </form>
+            <form noValidate onSubmit={handleSubmit(onSubmit)}>
+              <p className="w-[100%] ml-[20px] mb-2">Email</p>
+              <input
+                className={`w-[370px] h-[40px] bg-white rounded ml-5 text-black p-2 ${errors.email?.message ? 'error border-2 border-red-500' : ''}`}
+                type="email"
+                {...register('email')}
+              />
+              <p className="w-[100%] ml-[20px] text-red-600 mt-1">
+                {errors.email?.message}
+              </p>
+              <p className="w-[100%] ml-[20px] mt-2 mb-2">password</p>
+              <input
+                className={`w-[370px] h-[40px] bg-white rounded ml-5 mr-5 text-black p-2 ${errors.password?.message ? 'error border-2 border-red-500' : ''}`}
+                type="password"
+                {...register('password')}
+              />
+              <p className="w-[100%] ml-[20px] mt-1 text-red-600">
+                {errors.password?.message}
+              </p>
 
-        <SignInLik>
-          Não possui conta? ,<a>Sign Up</a>
-        </SignInLik>
-      </ContainerItens>
-    </Container>
+              <button
+                className="ml-5 md:mr-[175px] mt-10 w-[182.81px] rounded-[20px] bg-[#9758A6] hover:opacity-[0.8] active:opacity-[0.5] focus:outline-none border-none"
+                type="submit"
+              >
+                Sign In
+              </button>
+            </form>
+            <p className="w-[100%] ml-[50px] md:ml-[99px] mt-5">
+              Não possui conta ?{' '}
+              <a
+                className="text-decoration: underline text-white font-normal"
+                href="#"
+              >
+                Sign Up
+              </a>{' '}
+            </p>
+          </div>
+        </div>
+      </body>
+    </>
   )
 }
 
