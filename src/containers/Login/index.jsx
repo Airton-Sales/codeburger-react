@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { toast } from 'react-toastify'
 import * as yup from 'yup'
 
 import LoginImg from '../../assets/login-image.svg'
@@ -29,11 +30,21 @@ function Login() {
   })
 
   const onSubmit = async clientData => {
-    const res = await api.post('sessions', {
-      email: clientData.email,
-      password: clientData.password
-    })
+    const res = await toast.promise(
+      api.post('sessions', {
+        email: clientData.email,
+        password: clientData.password
+      }),
+      {
+        pending: 'Carregando...',
+        success: 'Login efetuado com sucesso',
+        error: 'Email ou senha inválidos'
+      }
+    )
+
+    console.log(clientData)
     console.log(res)
+    console.log(res.data)
   }
   return (
     <>
