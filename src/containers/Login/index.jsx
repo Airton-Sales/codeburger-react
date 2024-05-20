@@ -7,9 +7,12 @@ import * as yup from 'yup'
 import LoginImg from '../../assets/login-image.svg'
 import Logo from '../../assets/logo.svg'
 import Button from '../../components/Button'
+import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
 
 function Login() {
+  const { putUserData } = useUser()
+
   const schema = yup.object().shape({
     email: yup
       .string()
@@ -30,7 +33,7 @@ function Login() {
   })
 
   const onSubmit = async clientData => {
-    const res = await toast.promise(
+    const { data } = await toast.promise(
       api.post('sessions', {
         email: clientData.email,
         password: clientData.password
@@ -42,9 +45,7 @@ function Login() {
       }
     )
 
-    console.log(clientData)
-    console.log(res)
-    console.log(res.data)
+    putUserData(data)
   }
   return (
     <>
