@@ -1,6 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
+import { Link } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as yup from 'yup'
 
@@ -59,10 +60,10 @@ function Login() {
 
           <div className="bg-[#373737] h-[670px] md:h-[650px] md:w-[555px] flex flex-col justify-center items-center">
             <img className="w-[260px] h-[94px]" src={Logo} alt="" />
-            <h1 className="text-2xl text-center mt-24 mb-5">Login</h1>
+            <h1 className="text-2xl text-white mt-24 mb-5 ">Login</h1>
 
             <form noValidate onSubmit={handleSubmit(onSubmit)}>
-              <p className="w-[100%] ml-[20px] mb-2">Email</p>
+              <p className="w-[100%] ml-[20px] mb-2 text-white">Email</p>
               <input
                 className={`w-[370px] h-[40px] bg-white rounded ml-5 text-black p-2 ${errors.email?.message ? 'error border-2 border-red-500' : ''}`}
                 type="email"
@@ -71,7 +72,7 @@ function Login() {
               <p className="w-[100%] ml-[20px] text-red-600 mt-1">
                 {errors.email?.message}
               </p>
-              <p className="w-[100%] ml-[20px] mt-2 mb-2">password</p>
+              <p className="w-[100%] ml-[20px] mt-2 mb-2 text-white">Senha</p>
               <input
                 className={`w-[370px] h-[40px] bg-white rounded ml-5 mr-5 text-black p-2 ${errors.password?.message ? 'error border-2 border-red-500' : ''}`}
                 type="password"
@@ -84,14 +85,15 @@ function Login() {
                 Sign In
               </Button>
             </form>
-            <p className="w-[100%] ml-[50px] md:ml-[99px] mt-5">
+            <p className="w-[100%] ml-[50px] md:ml-[99px] mt-5 text-white">
               Não possui conta ?{' '}
-              <a
-                className="text-decoration: underline text-white font-normal"
+              <Link
+                to={'/cadastro'}
+                className="text-decoration: underline text-white hover:text-white font-normal"
                 href="#"
               >
                 Sign Up
-              </a>{' '}
+              </Link>{' '}
             </p>
           </div>
         </div>
