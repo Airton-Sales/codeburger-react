@@ -1,7 +1,7 @@
 import { yupResolver } from '@hookform/resolvers/yup'
 import React from 'react'
 import { useForm } from 'react-hook-form'
-import { Link } from 'react-router-dom'
+import { Link, useHistory } from 'react-router-dom'
 import { toast } from 'react-toastify'
 import * as yup from 'yup'
 
@@ -12,6 +12,7 @@ import { useUser } from '../../hooks/UserContext'
 import api from '../../services/api'
 
 function Login() {
+  const history = useHistory()
   const { putUserData } = useUser()
 
   const schema = yup.object().shape({
@@ -47,10 +48,14 @@ function Login() {
     )
 
     putUserData(data)
+
+    setTimeout(() => {
+      history.push('/')
+    }, 1000)
   }
   return (
     <>
-      <body className="bg-red bg-[url(C:\Users\airton\Desktop\DevClub\codeburger-react\src\assets\background.svg)] bg-no-repeat bg-cover w-screen h-screen flex justify-center items-center ">
+      <div className="bg-red bg-[url(C:\Users\airton\Desktop\DevClub\codeburger-react\src\assets\background.svg)] bg-no-repeat bg-cover w-screen h-screen flex justify-center items-center ">
         <div className="flex w-0 md:w-[1000px] justify-center items-center">
           <img
             className="w-[555px] h-[650px] invisible md:visible"
@@ -97,7 +102,7 @@ function Login() {
             </p>
           </div>
         </div>
-      </body>
+      </div>
     </>
   )
 }

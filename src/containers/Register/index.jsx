@@ -60,7 +60,7 @@ function Register() {
   }
   return (
     <>
-      <body className="bg-red bg-[url(C:\Users\airton\Desktop\DevClub\codeburger-react\src\assets\background.svg)] bg-no-repeat bg-cover w-screen h-screen flex justify-center items-center ">
+      <div className="bg-red bg-[url(C:\Users\airton\Desktop\DevClub\codeburger-react\src\assets\background.svg)] bg-no-repeat bg-cover w-screen h-screen flex justify-center items-center ">
         <div className="flex w-0 md:w-[1000px] justify-center items-center">
           <img
             className="w-[684px] rounded-tl-[20px] rounded-bl-[20px] invisible md:visible"
@@ -149,7 +149,7 @@ function Register() {
             </p>
           </div>
         </div>
-      </body>
+      </div>
     </>
   )
 }

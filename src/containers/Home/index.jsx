@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 
 import ArrowOff from '../../assets/arrow-off.svg'
 import Arrow from '../../assets/arrow.svg'
@@ -13,11 +13,21 @@ import Oferta from '../../assets/oferta.png'
 import ShoppingCart from '../../assets/shopping-cart.svg'
 import Sobremesa from '../../assets/sobremesa.svg'
 import Button from '../../components/Button'
+import Card from '../../components/card'
+import api from '../../services/api'
 
 function Home() {
+  useEffect(() => {
+    async function loadCategories() {
+      const res = await api.get('categories')
+
+      console.log(res)
+    }
+    loadCategories()
+  }, [])
   return (
     <>
-      <body className="w-full h-full flex flex-col items-center bg-[#EFEFEF]">
+      <div className="w-[100%] h-full flex flex-col items-center bg-[#EFEFEF]">
         <header className="w-[100%] h-[72px]  flex justify-between">
           <div className="flex items-center ml-[240px] gap-7">
             <p className="text-[#9758A6] font-bold">Home</p>
@@ -50,12 +60,11 @@ function Home() {
 
         <section className="flex w-[1181px] h-[365px] gap-2 mb-12 justify-center">
           <img
-            className="w-[56px] h-[56px] mt-56 mr-4"
+            className="w-[40px] h-[40px] mt-56"
             src={ArrowOff}
             alt="arrow-off"
           />
-          <article className="w-[283.4px]">
-            <img className="rounded-[20px] mb-3" src={Hamburgue} alt="" />
+          <Card src={Hamburgue}>
             <Button
               style={{
                 width: '283.4px',
@@ -67,9 +76,9 @@ function Home() {
             >
               Hamburgueres
             </Button>
-          </article>
-          <article className="w-[283.4px]">
-            <img className="rounded-[20px] mb-3" src={Bebida} alt="" />
+          </Card>
+
+          <Card src={Bebida}>
             <Button
               style={{
                 width: '283.4px',
@@ -81,9 +90,9 @@ function Home() {
             >
               Bebidas
             </Button>
-          </article>
-          <article className="w-[283.4px]">
-            <img className="rounded-[20px] mb-3" src={Sobremesa} alt="" />
+          </Card>
+
+          <Card src={Sobremesa}>
             <Button
               style={{
                 width: '283.4px',
@@ -95,9 +104,9 @@ function Home() {
             >
               Sobremesas
             </Button>
-          </article>
-          <article className="w-[283.4px]">
-            <img className="rounded-[20px] mb-3" src={Entradas} alt="" />
+          </Card>
+
+          <Card src={Entradas}>
             <Button
               style={{
                 width: '283.4px',
@@ -109,25 +118,18 @@ function Home() {
             >
               Entradas
             </Button>
-          </article>
-          <img
-            className="w-[56px] h-[56px] mt-56 mr-4"
-            src={Arrow}
-            alt="arrow"
-          />
+          </Card>
+
+          <img className="w-[40px] h-[40px] mt-56" src={Arrow} alt="arrow" />
         </section>
 
         <section className="flex flex-col items-center w-[100%] h-[679px] bg-[#FFFFFF]">
           <img className="w-[273px] h-[65px] m-12" src={Oferta} alt="" />
 
           <div className="flex gap-2">
-            <img
-              className="w-[56px] h-[56px] mt-56 mr-4"
-              src={ArrowL}
-              alt="arrow"
-            />
-            <article className="w-[283.4px]">
-              <img className="rounded-[20px] mb-3" src={Hamburgue} alt="" />
+            <img className="w-[40px] h-[40px] mt-56" src={ArrowL} alt="arrow" />
+
+            <Card src={Hamburgue}>
               <p>X-Tudo Especial da Casa</p>
               <p className="mt-2">R$ 35,90</p>
               <Button
@@ -140,11 +142,11 @@ function Home() {
                   marginTop: '15px'
                 }}
               >
-                Hamburgueres
+                Peça agora
               </Button>
-            </article>
-            <article className="w-[283.4px]">
-              <img className="rounded-[20px] mb-3" src={Bebida} alt="" />
+            </Card>
+
+            <Card src={Entradas}>
               <p>Panquecas</p>
               <p className="mt-2">R$ 15,90</p>
               <Button
@@ -157,13 +159,13 @@ function Home() {
                   marginTop: '15px'
                 }}
               >
-                Bebidas
+                Peça agora
               </Button>
-            </article>
-            <article className="w-[283.4px]">
-              <img className="rounded-[20px] mb-3" src={Sobremesa} alt="" />
+            </Card>
+
+            <Card src={Sobremesa}>
               <p>Waffles</p>
-              <p className="mt-2">R$ 20,90</p>
+              <p className="mt-2">R$ 15,90</p>
               <Button
                 style={{
                   width: '283.4px',
@@ -174,13 +176,13 @@ function Home() {
                   marginTop: '15px'
                 }}
               >
-                Sobremesas
+                Peça agora
               </Button>
-            </article>
-            <article className="w-[283.4px]">
-              <img className="rounded-[20px] mb-3" src={Entradas} alt="" />
+            </Card>
+
+            <Card src={Entradas}>
               <p>Misto quente</p>
-              <p className="mt-2">R$ 20,00</p>
+              <p className="mt-2">R$ 15,90</p>
               <Button
                 style={{
                   width: '283.4px',
@@ -191,17 +193,13 @@ function Home() {
                   marginTop: '15px'
                 }}
               >
-                Entradas
+                Peça agora
               </Button>
-            </article>
-            <img
-              className="w-[56px] h-[56px] mt-56 mr-4"
-              src={Arrow}
-              alt="arrow"
-            />
+            </Card>
+            <img className="w-[40px] h-[40px] mt-56" src={Arrow} alt="arrow" />
           </div>
         </section>
-      </body>
+      </div>
     </>
   )
 }
