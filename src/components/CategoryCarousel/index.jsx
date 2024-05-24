@@ -3,6 +3,7 @@ import Carousel from 'react-elastic-carousel'
 
 import api from '../../services/api'
 import Button from '../Button'
+import { Div } from './styles'
 
 function CategoryCarousel() {
   const [categories, setCategories] = useState([])
@@ -26,7 +27,7 @@ function CategoryCarousel() {
   ]
 
   return (
-    <div className="flex justify-center bg-[#EFEFEF]">
+    <Div className="flex justify-center bg-[#EFEFEF]">
       <Carousel
         itemsToShow={5}
         style={{ width: '90%' }}
@@ -39,7 +40,7 @@ function CategoryCarousel() {
               key={category.id}
             >
               <img
-                className="rounded-[10px]"
+                className="rounded-[10px] w-[283.4px]"
                 src={category.url}
                 alt="foto da categoria"
               />
@@ -48,8 +49,8 @@ function CategoryCarousel() {
                   marginRight: '20px',
                   marginTop: '5px',
                   width: '100%',
-                  height: '60px',
-                  borderRadius: '5px',
+                  height: '66px',
+                  borderRadius: '8px',
                   fontWeight: 'bold',
                   fontSize: '24px'
                 }}
@@ -59,7 +60,7 @@ function CategoryCarousel() {
             </div>
           ))}
       </Carousel>
-    </div>
+    </Div>
   )
 }
 

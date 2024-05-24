@@ -41,7 +41,7 @@ function CategoryCarousel2() {
               key={category.id}
             >
               <img
-                className="rounded-[10px]"
+                className="rounded-[10px] w-[282.79px] "
                 src={category.url}
                 alt="foto da categoria"
               />
@@ -57,7 +57,7 @@ function CategoryCarousel2() {
                   marginTop: '5px',
                   width: '100%',
                   height: '60px',
-                  borderRadius: '5px',
+                  borderRadius: '8px',
                   fontWeight: 'bold',
                   fontSize: '18px'
                 }}
