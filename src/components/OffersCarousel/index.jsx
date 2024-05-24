@@ -2,20 +2,28 @@ import React, { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel'
 
 import Ofertas from '../../assets/oferta.png'
-import Button from '../../components/Button'
 import api from '../../services/api'
+import formatCurrency from '../../utils/formatCurrency'
+import Button from '../Button'
+import { Div } from './styles'
 
-function CategoryCarousel2() {
-  const [categories, setCategories] = useState([])
+function OffersCarousel() {
+  const [offers, setOffers] = useState([])
 
   useEffect(() => {
-    async function loadCategories() {
+    async function loadOffers() {
       const { data } = await api.get('products')
-      console.log(data)
-      setCategories(data)
+
+      const onlyOffers = data
+        .filter(product => product.offer)
+        .map(product => {
+          return { ...product, formatedPrice: formatCurrency(product.price) }
+        })
+
+      setOffers(onlyOffers)
     }
 
-    loadCategories()
+    loadOffers()
   }, [])
 
   const breakPoints = [
@@ -27,29 +35,29 @@ function CategoryCarousel2() {
   ]
 
   return (
-    <div className="flex flex-col items-center justify-center bg-white">
+    <Div className="flex flex-col items-center justify-center bg-white">
       <img className="w-[273px] h-[65px] m-[25px]" src={Ofertas} alt="" />
       <Carousel
         itemsToShow={5}
         style={{ width: '90%' }}
         breakPoints={breakPoints}
       >
-        {categories &&
-          categories.map(category => (
+        {offers &&
+          offers.map(product => (
             <div
               className="flex flex-col items-center gap-2 m-2"
-              key={category.id}
+              key={product.id}
             >
               <img
                 className="rounded-[10px] w-[282.79px] "
-                src={category.url}
+                src={product.url}
                 alt="foto da categoria"
               />
-              <p className="w-[100%] text-left font-bold text-[22px]">
-                {category.name}
+              <p className="w-[100%] text-left font-bold text-[20px]">
+                {product.name}
               </p>
               <p className="w-[100%] text-left font-bold text-[22px]">
-                R$ {category.price}
+                R$ {product.formatedPrice}
               </p>
               <Button
                 style={{
@@ -67,8 +75,8 @@ function CategoryCarousel2() {
             </div>
           ))}
       </Carousel>
-    </div>
+    </Div>
   )
 }
 
-export default CategoryCarousel2
+export default OffersCarousel
