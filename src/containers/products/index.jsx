@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 
 import LogoProducts from '../../assets/logo-products.svg'
+import CardProduct from '../../components/CardProduct'
 import Header from '../../components/Header'
 import api from '../../services/api'
+import formatCurrency from '../../utils/formatCurrency'
 
 function Products() {
   const [categories, setCategories] = useState([])
+  const [products, setProducts] = useState([])
   const [activeCategory, setActiveCategories] = useState(0)
 
   useEffect(() => {
@@ -23,6 +26,17 @@ function Products() {
       setCategories(newCategories)
     }
 
+    async function loadProducts() {
+      const { data: allProducts } = await api.get('products')
+
+      const newProducts = allProducts.map(product => {
+        return { ...product, formatedPrice: formatCurrency(product.price) }
+      })
+
+      setProducts(newProducts)
+    }
+
+    loadProducts()
     loadCategories()
   }, [])
   return (
@@ -30,7 +44,7 @@ function Products() {
       <Header />
 
       <img className="w-[100%]" src={LogoProducts} alt="Logo da home" />
-      <div className="flex w-[100%] h-[31px] justify-center gap-16 mt-5">
+      <div className="flex w-[100%] h-[31px] justify-center gap-16 mt-5 mb-14">
         {categories &&
           categories.map(category => (
             <button
@@ -42,6 +56,12 @@ function Products() {
             >
               {category.name}
             </button>
+          ))}
+      </div>
+      <div className="w-[100%] flex flex-wrap gap-5 justify-center items-center">
+        {products &&
+          products.map(product => (
+            <CardProduct key={product.id} product={product} />
           ))}
       </div>
     </>
