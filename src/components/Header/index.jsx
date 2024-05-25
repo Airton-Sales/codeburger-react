@@ -2,8 +2,6 @@ import propTypes from 'prop-types'
 import React from 'react'
 
 import Avatar from '../../assets/avatar.svg'
-import Categoria from '../../assets/CATEGORIAS.svg'
-import HomeLogo from '../../assets/home-logo.svg'
 import ShoppingCart from '../../assets/shopping-cart.svg'
 
 function Header() {
@@ -37,8 +35,6 @@ function Header() {
             </div>
           </div>
         </header>
-        <img className="w-[100%]" src={HomeLogo} alt="Logo da home" />
-        <img className="w-[412px] m-10" src={Categoria} alt="" />
       </div>
     </>
   )

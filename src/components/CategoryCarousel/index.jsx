@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import Carousel from 'react-elastic-carousel'
 
+import Categoria from '../../assets/CATEGORIAS.svg'
 import api from '../../services/api'
 import Button from '../Button'
 import { Div } from './styles'
@@ -27,7 +28,8 @@ function CategoryCarousel() {
   ]
 
   return (
-    <Div className="flex justify-center bg-[#EFEFEF]">
+    <Div className="flex flex-col justify-center items-center bg-[#EFEFEF]">
+      <img className="w-[412px] m-10" src={Categoria} alt="" />
       <Carousel
         itemsToShow={5}
         style={{ width: '90%' }}
