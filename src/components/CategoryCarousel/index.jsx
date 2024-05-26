@@ -3,10 +3,10 @@ import Carousel from 'react-elastic-carousel'
 
 import Categoria from '../../assets/CATEGORIAS.svg'
 import api from '../../services/api'
-import Button from '../Button'
+import { Button } from '../Button'
 import { Div } from './styles'
 
-function CategoryCarousel() {
+export function CategoryCarousel() {
   const [categories, setCategories] = useState([])
 
   useEffect(() => {
@@ -65,5 +65,3 @@ function CategoryCarousel() {
     </Div>
   )
 }
-
-export default CategoryCarousel

@@ -1,9 +1,9 @@
 import PropTypes from 'prop-types'
 import React from 'react'
 
-import Button from '../Button'
+import { Button } from '../Button'
 
-function CardProduct({ product }) {
+export function CardProduct({ product }) {
   return (
     <div className="w-[387px] h-[202px] flex items-center justify-center rounded-[20px] bg-white">
       <img
@@ -11,7 +11,7 @@ function CardProduct({ product }) {
         src={product.url}
         alt="foto do produto"
       />
-      <div className="flex flex-col w-[100%] ml-3 bg-white">
+      <div className="flex flex-col w-[100%] rounded-[20px] ml-3 bg-white">
         <div className="w-[151px] h-[116px] mb-7 flex flex-col justify-between bg-white">
           <p className="bg-white">{product.name}</p>
           <p className="text-[18px] font-medium bg-white">
@@ -25,8 +25,6 @@ function CardProduct({ product }) {
     </div>
   )
 }
-
-export default CardProduct
 
 CardProduct.propTypes = {
   product: PropTypes.object

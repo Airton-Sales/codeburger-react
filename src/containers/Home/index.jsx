@@ -1,11 +1,9 @@
 import React from 'react'
 
 import HomeLogo from '../../assets/home-logo.svg'
-import CategoryCarousel from '../../components/CategoryCarousel'
-import Header from '../../components/Header'
-import OffersCarousel from '../../components/OffersCarousel'
+import { Header, CategoryCarousel, OffersCarousel } from '../../components'
 
-function Home() {
+export function Home() {
   return (
     <>
       <Header />
@@ -15,5 +13,3 @@ function Home() {
     </>
   )
 }
-
-export default Home

@@ -4,7 +4,7 @@ import React from 'react'
 import Avatar from '../../assets/avatar.svg'
 import ShoppingCart from '../../assets/shopping-cart.svg'
 
-function Header() {
+export function Header() {
   return (
     <>
       <div className="w-[100%] h-full flex flex-col items-center bg-[#EFEFEF]">
@@ -39,8 +39,6 @@ function Header() {
     </>
   )
 }
-
-export default Header
 
 Header.propTypes = {
   children: propTypes.node

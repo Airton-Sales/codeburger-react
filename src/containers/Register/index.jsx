@@ -7,10 +7,10 @@ import * as yup from 'yup'
 
 import Logo from '../../assets/logo.svg'
 import RegisterImg from '../../assets/Register.svg'
-import Button from '../../components/Button'
+import { Button } from '../../components'
 import api from '../../services/api'
 
-function Register() {
+export function Register() {
   const schema = yup.object().shape({
     name: yup.string().required('Nome é obrigatório'),
     email: yup
@@ -70,11 +70,13 @@ function Register() {
 
           <div className="bg-[#373737] h-[670px] md:h-[650px] md:w-[555px] flex flex-col justify-center items-center rounded-tr-[20px] rounded-br-[20px]">
             <img className="w-[260px] h-[94px]" src={Logo} alt="" />
-            <h1 className="text-2xl text-center mt-3 mb-2">Cadastre-se</h1>
+            <h1 className="text-white text-2xl text-center mt-3 mb-2">
+              Cadastre-se
+            </h1>
 
             <form noValidate onSubmit={handleSubmit(onSubmit)}>
               <p
-                className={`w-[100%] ml-[20px] mb-2 ${errors.name?.message ? 'error mb-0' : 'mb-2'} `}
+                className={`text-white w-[100%] ml-[20px] mb-2 ${errors.name?.message ? 'error mb-0' : 'mb-2'} `}
               >
                 Nome
               </p>
@@ -88,7 +90,7 @@ function Register() {
               </p>
 
               <p
-                className={`w-[100%] ml-[20px] mb-2 mt-2 ${errors.email?.message ? 'error mb-0' : 'mb-2'} ${errors.email?.message ? 'error mt-0' : 'mt-2'}`}
+                className={`text-white w-[100%] ml-[20px] mb-2 mt-2 ${errors.email?.message ? 'error mb-0' : 'mb-2'} ${errors.email?.message ? 'error mt-0' : 'mt-2'}`}
               >
                 Email
               </p>
@@ -101,7 +103,7 @@ function Register() {
                 {errors.email?.message}
               </p>
               <p
-                className={`w-[100%] ml-[20px] mb-2 mt-2 ${errors.password?.message ? 'error mb-0' : 'mb-2'} ${errors.password?.message ? 'error mt-0' : 'mt-2'}`}
+                className={`text-white w-[100%] ml-[20px] mb-2 mt-2 ${errors.password?.message ? 'error mb-0' : 'mb-2'} ${errors.password?.message ? 'error mt-0' : 'mt-2'}`}
               >
                 Senha
               </p>
@@ -116,7 +118,7 @@ function Register() {
               </p>
 
               <p
-                className={`w-[100%] ml-[20px] mt-2 mb-2 ${errors.confirmPassword?.message ? 'error mb-0' : 'mb-2'} ${errors.confirmPassword?.message ? 'error mt-0' : 'mt-2'}`}
+                className={`text-white w-[100%] ml-[20px] mt-2 mb-2 ${errors.confirmPassword?.message ? 'error mb-0' : 'mb-2'} ${errors.confirmPassword?.message ? 'error mt-0' : 'mt-2'}`}
               >
                 Confirme sua senha
               </p>
@@ -137,7 +139,7 @@ function Register() {
                 Sign In
               </Button>
             </form>
-            <p className="w-[100%] ml-[50px] mt-3">
+            <p className="w-[100%] ml-[50px] mt-3 text-white">
               Já possui conta ?{' '}
               <Link
                 to={'/login'}
@@ -153,5 +155,3 @@ function Register() {
     </>
   )
 }
-
-export default Register
